@@ -1,0 +1,65 @@
+<style>
+    .back{
+        position: relative;;
+        width:100%;
+        z-index: -1;
+    }
+
+    .poster
+    {
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 10px;
+        height:200px;
+        z-index: 1;
+    }
+    .nombre{
+        position: absolute;
+        margin-left: 62px;
+        margin-top: 100px;
+        z-index: 0;
+        color: white;
+        font-size: xx-large;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .logo{
+        height: 30px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+</style>
+<div class="row text-center">      
+    <img src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" class="back">
+    <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="poster">
+    <p class="nombre col-12">{{movie.title}}</p>
+    
+    <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Genres</th>
+            <td>{{movie.genres[0].name}}, {{movie.genres[1].name}}, {{movie.genres[2].name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Original Language</th>
+            <td>{{movie.original_language}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Production Companies</th>
+            <td>
+                <img src="https://image.tmdb.org/t/p/w500{{movie.production_companies[0].logo_path}}" class="logo">
+                <img src="https://image.tmdb.org/t/p/w500{{movie.production_companies[1].logo_path}}" class="logo">
+                <img src="https://image.tmdb.org/t/p/w500{{movie.production_companies[2].logo_path}}" class="logo">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Country</th>
+            <td>{{movie.production_countries[0].iso_3166_1}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Release Date</th>
+            <td>{{movie.release_date}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>

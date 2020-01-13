@@ -1,0 +1,31 @@
+<style>
+    .back{
+        position: relative;;
+        width:100%;
+        z-index: -1;
+    }
+
+    .poster
+    {
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 10px;
+        height:200px;
+        z-index: 1;
+    }
+    .nombre{
+        position: absolute;
+        width: 200px;
+        margin-left: 145px;
+        margin-top: 90px;
+        z-index: 0;
+        color: white;
+        font-size: x-large;
+        background: rgba(0, 0, 0, 0.4);
+    }
+</style>
+<div *ngFor="let movie of movies; index as i" class="row text-center">        
+    <img src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" class="back">
+    <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="poster">
+    <a [routerLink]="['details']" class="nombre col-12">{{movie.title}}</a>
+</div>
