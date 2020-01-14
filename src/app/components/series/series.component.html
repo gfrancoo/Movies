@@ -1,0 +1,45 @@
+<style>
+    .back {
+      position: relative;
+      ;
+      width: 100%;
+      z-index: -1;
+    }
+  
+    .poster {
+      position: absolute;
+      margin-top: 15px;
+      margin-left: 10px;
+      height: 190px;
+      z-index: 1;
+    }
+  
+    .nombre {
+      position: absolute;
+      width: 200px;
+      margin-left: 145px;
+      margin-top: 90px;
+      z-index: 0;
+      color: white;
+      font-size: x-large;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  
+    button {
+      border: none;
+    }
+  
+  </style>
+  
+  
+  
+  <div class="row text-center search-results" infinite-scroll [infiniteScrollDistance]="6" [infiniteScrollThrottle]="100"
+  (scrolled)="onScroll()">
+    <div *ngFor="let page of allSeries; index as i" id="scroll" >
+      <div *ngFor="let serie of page" class="row text-center">
+        <img src="https://image.tmdb.org/t/p/w500{{serie.backdrop_path}}" class="back">
+        <img src="https://image.tmdb.org/t/p/w500{{serie.poster_path}}" class="poster">
+        <button [routerLink]="['details',serie.id]" class="nombre col-12">{{serie.original_name}}</button>
+      </div>
+    </div>
+  </div>

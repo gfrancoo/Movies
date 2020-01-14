@@ -44,4 +44,7 @@ export class DetailsComponent implements OnInit {
     )
   }
 
+  reloadPage(){
+    this.ngOnInit()
+  }
 }

@@ -8,13 +8,15 @@ import { MovieComponent } from './components/movie/movie.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DetailsComponent } from './components/details/details.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll'
-import { NgxSpinnerModule } from 'ngx-spinner'
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SeriesComponent } from './components/series/series.component'
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MovieComponent,
-    DetailsComponent
+    DetailsComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule,
