@@ -18,7 +18,7 @@ export class DetailsComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private __http: HttpClient) {
     
    }
-
+   
   ngOnInit() {
     this.id = this._route.snapshot.paramMap.get('id')
     this.findMovie()
@@ -39,7 +39,6 @@ export class DetailsComponent implements OnInit {
     this.__http.get('https://api.themoviedb.org/3/movie/'+this.id+'/recommendations?api_key=28a0d9072466fb61d9c60ead94c48450&language=en-US&page=1',
     ).subscribe(
       data => {
-        console.log("hila")
         this.recommendations = data.results
       }
     )

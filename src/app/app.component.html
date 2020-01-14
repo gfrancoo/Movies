@@ -1,6 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-  <a class="navbar-brand" [routerLink]="['home']">Movies</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+
+  <div [routerLink]="['home']" class="row align-middle">
+    <img src="https://www.watchguard.com/sites/default/files/simplicity.png" style="height: auto;"
+      class="col-3 col-md-4">
+    <a class="navbar-brand">Movies</a>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -13,7 +20,8 @@
         <a class="nav-link" [routerLink]="['movies']">Movies</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

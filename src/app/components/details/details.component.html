@@ -21,11 +21,19 @@
         color: white;
         font-size: xx-large;
         background: rgba(0, 0, 0, 0.5);
+        line-height: 90%;    
     }
     .logo{
         height: 30px;
         margin-left: 10px;
         margin-top: 10px;
+    }
+    .overview{
+      position: absolute;
+      margin-top: 100px;
+      margin-left: 150px;
+      color: white;
+      font-size: small;
     }
 </style>
 <div class="row text-center">      
@@ -33,31 +41,38 @@
     <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="poster">
     <p class="nombre col-7 col-sm-7 col-md-8 col-lg-10">{{movie.title}}</p>
     
+    <p class="text-justify mx-5 my-3">{{movie.overview}}</p>
+
     <table class="table">
         <tbody>
           <tr>
-            <th scope="row">Genres</th>
-            <td>{{movie.genres[0].name}}, {{movie.genres[1].name}}, {{movie.genres[2].name}}</td>
+            <th scope="row" class="align-middle">Genres</th>
+            
+            <td>
+              <p *ngFor="let genre of movie.genres">{{genre.name}}</p>
+            </td>
           </tr>
           <tr>
-            <th scope="row">Original Language</th>
+            <th scope="row" class="align-middle">Original Language</th>
             <td>{{movie.original_language}}</td>
           </tr>
           <tr>
             <th scope="row">Production Companies</th>
             <td>
-                <img src="https://image.tmdb.org/t/p/w500{{movie.production_companies[0].logo_path}}" class="logo">
-                <img src="https://image.tmdb.org/t/p/w500{{movie.production_companies[1].logo_path}}" class="logo">
-                <img src="https://image.tmdb.org/t/p/w500{{movie.production_companies[2].logo_path}}" class="logo">
+                <img *ngFor="let production of movie.production_companies" src="https://image.tmdb.org/t/p/w500{{production.logo_path}}" class="logo">
             </td>
           </tr>
           <tr>
-            <th scope="row">Country</th>
-            <td>{{movie.production_countries[0].iso_3166_1}}</td>
+            <th scope="row" class="align-middle">Country</th>
+            <td>{{movie.production_countries[0].name}}</td>
           </tr>
           <tr>
-            <th scope="row">Release Date</th>
+            <th scope="row" class="align-middle">Release Date</th>
             <td>{{movie.release_date}}</td>
+          </tr>
+          <tr>
+            <th scope="row" class="align-middle">Rating</th>
+            <td>{{movie.vote_average}} / 10</td>
           </tr>
         </tbody>
       </table>
@@ -68,7 +83,7 @@
   <h3 class="ml-3">Recommendations</h3>
 
   <div class="col mb-4" *ngFor="let recommendation of recommendations">
-    <div class="card">
+    <div class="card" [routerLink]="['../../details',recommendation.id]">
       <img src="https://image.tmdb.org/t/p/w500{{recommendation.backdrop_path}}" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{recommendation.title}}</h5>
