@@ -8,9 +8,9 @@
     .poster
     {
         position: absolute;
-        margin-top: 30px;
+        margin-top: 15px;
         margin-left: 10px;
-        height:200px;
+        height:190px;
         z-index: 1;
     }
     .nombre{
@@ -24,8 +24,11 @@
         background: rgba(0, 0, 0, 0.4);
     }
 </style>
-<div *ngFor="let movie of movies; index as i" class="row text-center">        
+
+
+
+<div *ngFor="let movie of movies; index as i" class="row text-center" id="scroll" >       
     <img src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" class="back">
     <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="poster">
-    <a [routerLink]="['details']" class="nombre col-12">{{movie.title}}</a>
+    <button [routerLink]="['details',movie.id]"  class="nombre col-12">{{movie.title}}</button>
 </div>
