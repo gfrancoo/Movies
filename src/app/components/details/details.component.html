@@ -63,3 +63,17 @@
       </table>
 
 </div>
+
+<div class="row row-cols-1 row-cols-md-2">
+  <h3 class="ml-3">Recommendations</h3>
+
+  <div class="col mb-4" *ngFor="let recommendation of recommendations">
+    <div class="card">
+      <img src="https://image.tmdb.org/t/p/w500{{recommendation.backdrop_path}}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{recommendation.title}}</h5>
+        <p class="card-text">{{recommendation.overview}}</p>
+      </div>
+    </div>
+  </div>
+</div>
