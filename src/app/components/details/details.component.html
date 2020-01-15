@@ -155,7 +155,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p id="text-error"></p>
+          <p id="text-info"></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -168,7 +168,7 @@
 <div class="row row-cols-1 row-cols-md-2">
   <h3 class="ml-3">Recommendations</h3>
 
-  <div class="col mb-4" *ngFor="let recommendation of recommendations">
+  <div class="col mb-4" *ngFor="let recommendation of recommendations[0]">
     <div class="card" [routerLink]="['../../details',recommendation.id]" (click)=reloadPage()>
       <img src="https://image.tmdb.org/t/p/w500{{recommendation.backdrop_path}}" class="card-img-top">
       <div class="card-body">

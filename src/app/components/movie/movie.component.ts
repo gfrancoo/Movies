@@ -7,13 +7,12 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './movie.component.html',
   styles: []
 })
-export class MovieComponent implements OnInit {
-  page = 1
+export class MovieComponent implements OnInit {  
+  private page :number = 1
+  public allMovies :Object[] = []
 
   constructor(private __http: HttpClient) { 
   }
-  private movies
-  private allMovies :Object[] = []
 
   ngOnInit() {
     this.getMovies();
@@ -22,9 +21,7 @@ export class MovieComponent implements OnInit {
   getMovies(){
     this.__http.get('https://api.themoviedb.org/3/movie/popular?api_key=28a0d9072466fb61d9c60ead94c48450&language=en-US&page=' + this.page,
     ).subscribe(
-      data => {
-        //console.log(data.results)
-        this.movies = data.results
+      (data :any) => {
         this.allMovies.push(data.results)
         //console.log(this.allMovies)
       }
@@ -33,7 +30,7 @@ export class MovieComponent implements OnInit {
 
   onScroll(){
     this.page++
-    console.log("Scrolled" + this.page)
     this.getMovies()
+    console.log("Scrolled " + this.page)
   }
 }

@@ -8,21 +8,25 @@ import { HttpClient } from '@angular/common/http';
   styles: []
 })
 export class DetailsComponent implements OnInit {
-  movie
-  recommendations
-  id:string
-  ratingMovie:number
+  public movie :any
+  public recommendations :Object[] = []
+  public id:string
+  public ratingMovie:number
 
   constructor(private _route: ActivatedRoute, private __http: HttpClient) {
-    
-   }
+  }
    
   ngOnInit() {
     this.id = this._route.snapshot.paramMap.get('id')
     this.findMovie()
     this.findRecommendations()
-    //this.rateMovie()
+    this.toTop()
   }
+
+  toTop() {
+    window.scrollTo(0, 0)
+  }
+
 
   findMovie(){
     this.__http.get('https://api.themoviedb.org/3/movie/' + this.id + '?api_key=28a0d9072466fb61d9c60ead94c48450&language=en-US',
@@ -38,12 +42,13 @@ export class DetailsComponent implements OnInit {
     this.__http.get('https://api.themoviedb.org/3/movie/' + this.id + '/recommendations?api_key=28a0d9072466fb61d9c60ead94c48450&language=en-US&page=1',
     ).subscribe(
       (data:any) => {
-        this.recommendations = data.results
+        this.recommendations.push(data.results)
       }
     )
   }
 
   reloadPage(){
+    console.log("reload")
     this.ngOnInit()
   }
 
@@ -56,16 +61,17 @@ export class DetailsComponent implements OnInit {
     this.__http.post(url,json).toPromise().then(
       data=>{
         console.log(data)
+        document.getElementById('text-info').innerHTML = `${data}`
       },
       error=>{
         console.log(error.error)
-        document.getElementById('text-error').innerHTML = `${error.error.status_message}`
+        document.getElementById('text-info').innerHTML = `${error.error.status_message}`
       }
     )
   }
 
   rateMovie(){
-    const checkRadioStar = document.querySelector(
+    const checkRadioStar:any = document.querySelector(
       'input[name="star"]:checked'
     )
     if(checkRadioStar == null) return
