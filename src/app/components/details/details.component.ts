@@ -59,6 +59,7 @@ export class DetailsComponent implements OnInit {
       },
       error=>{
         console.log(error.error)
+        document.getElementById('text-error').innerHTML = `${error.error.status_message}`
       }
     )
   }

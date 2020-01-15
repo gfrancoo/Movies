@@ -38,27 +38,31 @@
     color: white;
     font-size: small;
   }
-  
-  .rating{
+
+  .rating {
     display: flex;
     transform: rotateY(180deg);
   }
-  .rating input{
-    display:none
+
+  .rating input {
+    display: none
   }
-  .rating label{
+
+  .rating label {
     display: block;
     cursor: pointer;
     width: 60px;
   }
-  .rating label:before{
+
+  .rating label:before {
     content: '\f005';
     font-family: fontAwesome;
     display: block;
     font-size: 30px;
     color: rgb(180, 180, 180);
   }
-  .rating label:after{
+
+  .rating label:after {
     display: block;
     content: '\f005';
     font-family: fontAwesome;
@@ -72,10 +76,11 @@
   }
 
   .rating label:hover:after,
-  .rating label:hover ~ label:after,
-  .rating input:checked ~ label:after{
+  .rating label:hover~label:after,
+  .rating input:checked~label:after {
     opacity: 1;
   }
+
 </style>
 
 <div class="row text-center">
@@ -132,7 +137,32 @@
   </div>
 </div>
 <div class="text-center">
-  <button class="btn btn-dark" (click)=rateMovie()>Rate Movie</button>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)=rateMovie()>
+    Rate Movie
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Movies</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="text-error"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row row-cols-1 row-cols-md-2">
