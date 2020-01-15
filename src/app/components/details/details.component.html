@@ -38,7 +38,44 @@
     color: white;
     font-size: small;
   }
+  
+  .rating{
+    display: flex;
+    transform: rotateY(180deg);
+  }
+  .rating input{
+    display:none
+  }
+  .rating label{
+    display: block;
+    cursor: pointer;
+    width: 60px;
+  }
+  .rating label:before{
+    content: '\f005';
+    font-family: fontAwesome;
+    display: block;
+    font-size: 30px;
+    color: rgb(180, 180, 180);
+  }
+  .rating label:after{
+    display: block;
+    content: '\f005';
+    font-family: fontAwesome;
+    display: block;
+    font-size: 30px;
+    color: rgb(255, 195, 0);
+    position: relative;
+    top: -45px;
+    opacity: 0;
+    transition: 0.5s;
+  }
 
+  .rating label:hover:after,
+  .rating label:hover ~ label:after,
+  .rating input:checked ~ label:after{
+    opacity: 1;
+  }
 </style>
 
 <div class="row text-center">
@@ -83,6 +120,19 @@
     </tbody>
   </table>
 
+</div>
+
+<div class="text-center">
+  <div class="rating">
+    <input type="radio" name="star" value="1" id="star1" class="star"><label for="star1"></label>
+    <input type="radio" name="star" value="2" id="star2" class="star"><label for="star2"></label>
+    <input type="radio" name="star" value="3" id="star3" class="star"><label for="star3"></label>
+    <input type="radio" name="star" value="4" id="star4" class="star"><label for="star4"></label>
+    <input type="radio" name="star" value="5" id="star5" class="star"><label for="star5"></label>
+  </div>
+</div>
+<div class="text-center">
+  <button class="btn btn-dark" (click)=rateMovie()>Rate Movie</button>
 </div>
 
 <div class="row row-cols-1 row-cols-md-2">
